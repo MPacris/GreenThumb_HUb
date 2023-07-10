@@ -24,7 +24,7 @@ services:
 
   greenthumb-hub-frontend:
     build: ./frontend
-    image: mpacris greenthumb-hub-frontend:1.0
+    image: mpacris/greenthumb-hub-frontend:1.0
     ports:
       - 80:80
       - 80:3000
