@@ -1,0 +1,65 @@
+.image-container {
+    max-width: 300px;
+    margin: 0 auto;
+  }
+  
+  .harvest-image {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #f5f5f5;
+    box-shadow:  2px 2px 4px rgba(0, 0, 0, 0.2);
+  }
+
+  .harvest-information{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #f5f5f5;
+    box-shadow:  2px 2px 4px rgba(0, 0, 0, 0.2);
+
+  }
+
+  .task-information{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #f5f5f5;
+    box-shadow:  2px 2px 4px rgba(0, 0, 0, 0.2);
+  }
+
+  .edit-harvest-details{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #f5f5f5;
+    box-shadow:  2px 2px 4px rgba(0, 0, 0, 0.2);
+  }

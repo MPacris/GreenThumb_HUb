@@ -1,0 +1,95 @@
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .row {
+    margin-bottom: 20px;
+  }
+  
+  .welcome-message {
+    font-size: 36px;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  
+  .add-garden-link {
+    margin-top: 10px;
+    text-decoration: none;
+    color: #077c10d5;
+  }
+  
+  .add-garden-link:hover {
+    text-decoration: underline;
+  }
+  
+  .add-garden-text {
+    font-weight: bold;
+  }
+  
+  .garden-list {
+    background-color: #f5f5f5;
+    padding: 20px;
+  }
+  
+  .section-title {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .garden-link {
+    text-decoration: none;
+    color:#077c10d5;
+  }
+
+  .garden-link:hover {
+    text-decoration: underline;
+  }
+  
+  .garden-item {
+    margin-bottom: 10px;
+  }
+  
+  .add-gardener-form {
+    background-color: #f5f5f5;
+    padding: 20px;
+  }
+  
+  .form-group {
+    margin-bottom: 15px;
+  }
+  
+  .form-label {
+    font-weight: bold;
+  }
+  
+  .form-control {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .form-select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .submit-button {
+    padding: 10px 20px;
+    background-color: #297c08e0;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin: 10px;
+  }
+  
+  .submission-status {
+    font-weight: bold;
+    margin-top: 10px;
+  }

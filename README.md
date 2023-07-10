@@ -1,1 +1,1 @@
-# GreenThumb_HUb
+# Gardener_App_Capstone_Project

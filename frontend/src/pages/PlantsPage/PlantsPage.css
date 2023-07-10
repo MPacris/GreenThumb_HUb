@@ -1,0 +1,28 @@
+.plant-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  width: 300px;
+  height: 400px;
+  margin-bottom: 80px;
+}
+
+.plant-picture {
+  object-fit: cover;
+  width: 290px;
+  height: 390px;
+}
+
+.red-background {
+  background-color: red;
+}
+
+.bottom-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: left;
+  margin-top: 40px;
+  justify-content: space-evenly;
+}
