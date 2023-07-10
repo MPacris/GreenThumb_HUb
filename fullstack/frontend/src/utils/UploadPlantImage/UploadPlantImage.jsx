@@ -16,7 +16,7 @@ const UploadPlantImage = ({ plant, token, handleImageUpload }) => {
       formData.append("image_url", imageFile);
 
       await axios.post(
-        `http://localhost:5000/api/plantImage/${plant.id}`,
+        `http://18.117.255.133/api/plantImage/${plant.id}`,
         formData,
         {
           headers: {

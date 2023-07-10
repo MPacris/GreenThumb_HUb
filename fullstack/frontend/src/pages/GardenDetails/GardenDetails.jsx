@@ -25,7 +25,7 @@ const GardenDetails = () => {
     const fetchGardenDetails = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:5000/api/gardens/${garden_id}`,
+          `http://18.117.255.133/api/gardens/${garden_id}`,
           {
             headers: {
               Authorization: "Bearer " + token,
@@ -43,7 +43,7 @@ const GardenDetails = () => {
     const fetchPlants = async () => {
       try {
         const plantResponse = await axios.get(
-          "http://localhost:5000/api/plants",
+          "http://18.117.255.133/api/plants",
           {
             headers: {
               Authorization: "Bearer " + token,
@@ -54,7 +54,7 @@ const GardenDetails = () => {
         const plantData = plantResponse.data;
 
         const harvestResponse = await axios.get(
-          "http://localhost:5000/api/harvests",
+          "http://18.117.255.133/api/harvests",
           {
             headers: {
               Authorization: "Bearer " + token,
@@ -132,7 +132,7 @@ const GardenDetails = () => {
 
     try {
       const response = await axios.post(
-        "http://localhost:5000/api/plants",
+        "http://18.117.255.133/api/plants",
         {
           type: formData.type,
           location: formData.location,
@@ -258,7 +258,7 @@ const GardenDetails = () => {
                 <div>{plant.location}</div>
                 {plant.image_url && (
                   <img
-                    src={`http://localhost:5000/static/images/${plant.image_url}`}
+                    src={`http://18.117.255.133/static/images/${plant.image_url}`}
                     alt="Plant Image"
                     className="plant-picture"
                   />
