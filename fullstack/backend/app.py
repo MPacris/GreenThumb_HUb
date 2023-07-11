@@ -88,7 +88,10 @@ def create_routes():
     api.add_resource(HarvestImageUploadResource, '/api/harvestImage/<int:harvest_id>')
     api.add_resource(GetHarvestChartResource, '/api/harvest-chart/<int:plant_id>')
 
+
     api.add_resource(UserGardensResource, '/api/user_gardens')
 
 
     return api
+
+app = create_app()
