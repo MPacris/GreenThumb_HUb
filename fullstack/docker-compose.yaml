@@ -1,7 +1,7 @@
 version: '3.4'
 services:
   greenthumb-hub-database:
-    # build: ./database
+    #build: ./database
     image: mpacris/greenthumb-hub-database:1.0
     ports:
       - 3306:3306
@@ -10,8 +10,9 @@ services:
     restart: always
 
 
+
   greenthumb-hub-backend:
-    # build: ./backend
+    #build: ./backend
     image: mpacris/greenthumb-hub-backend:1.0
     ports:
       - 5000:5000
@@ -22,11 +23,9 @@ services:
       sh -c "flask db upgrade && gunicorn -b 0.0.0.0 app:app"
 
   greenthumb-hub-frontend:
-    # build: ./frontend
+    #build: ./frontend
     image: mpacris/greenthumb-hub-frontend:1.0
     ports:
       - 80:3000
     depends_on:
       - "greenthumb-hub-backend"
-volumes:
-  db-data:
