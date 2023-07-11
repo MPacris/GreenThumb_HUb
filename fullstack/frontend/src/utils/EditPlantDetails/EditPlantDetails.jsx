@@ -22,7 +22,7 @@ const EditPlantDetails = ({ plant, token, handleSave }) => {
         location: newLocation,
       };
 
-      await axios.put(`http://18.117.255.133/api/plants/${plant.id}`, data, {
+      await axios.put(`http://18.117.255.133:8000/api/plants/${plant.id}`, data, {
         headers: {
           Authorization: "Bearer " + token,
         },

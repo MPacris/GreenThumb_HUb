@@ -11,14 +11,14 @@ const PlantsPage = () => {
   useEffect(() => {
     const fetchPlants = async () => {
       try {
-        const gardenIdsResponse = await axios.get("http://18.117.255.133/api/user_gardens", {
+        const gardenIdsResponse = await axios.get("http://18.117.255.133:8000/api/user_gardens", {
           headers: {
             Authorization: "Bearer " + token,
           },
         });
         const gardenIds = gardenIdsResponse.data.map((garden) => garden.garden_id);
 
-        const plantResponse = await axios.get("http://18.117.255.133/api/plants", {
+        const plantResponse = await axios.get("http://18.117.255.133:8000/api/plants", {
           headers: {
             Authorization: "Bearer " + token,
           },
@@ -30,7 +30,7 @@ const PlantsPage = () => {
 
         const fetchHarvests = async () => {
           try {
-            const harvestsResponse = await axios.get("http://18.117.255.133/api/harvests", {
+            const harvestsResponse = await axios.get("http://18.117.255.133:8000/api/harvests", {
               headers: {
                 Authorization: "Bearer " + token,
               },
@@ -94,7 +94,7 @@ const PlantsPage = () => {
               <div>{plant.location}</div>
               {plant.image_url && (
                 <img
-                  src={`http://18.117.255.133/static/images/${plant.image_url}`}
+                  src={`http://18.117.255.133:8000/static/images/${plant.image_url}`}
                   alt="Plant Image"
                   className="plant-picture"
                 />

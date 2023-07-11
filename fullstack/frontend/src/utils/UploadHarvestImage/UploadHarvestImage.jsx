@@ -19,7 +19,7 @@ const UploadHarvestImage = ({ harvest, token }) => {
       const formData = new FormData();
       formData.append("image_url", imageFile);
 
-      await axios.post(`http://18.117.255.133/api/harvestImage/${harvest.id}`, formData);
+      await axios.post(`http://18.117.255.133:8000/api/harvestImage/${harvest.id}`, formData);
       navigate("/harvests");
     } catch (error) {
       
