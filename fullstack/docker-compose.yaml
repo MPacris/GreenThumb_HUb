@@ -14,7 +14,7 @@ services:
     build: ./backend
     image: mpacris/greenthumb-hub-backend:1.0
     ports:
-      - 5000:5000
+      - 8000:8000
     restart: always
     depends_on:
       - "db"
