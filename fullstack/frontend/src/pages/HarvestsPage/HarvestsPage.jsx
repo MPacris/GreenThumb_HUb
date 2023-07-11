@@ -17,7 +17,7 @@ const HarvestsPage = () => {
   useEffect(() => {
     const fetchHarvests = async () => {
       try {
-        const response = await axios.get(`http://18.117.255.133:8000/api/harvests?user_id=${user.id}`, {
+        const response = await axios.get(`http://localhost:5000/api/harvests?user_id=${user.id}`, {
           headers: {
             Authorization: "Bearer " + token,
           },
@@ -27,7 +27,7 @@ const HarvestsPage = () => {
 
         const plantIds = harvestData.map((harvest) => harvest.plant_id);
         const plantResponse = await axios.get(
-          `http://18.117.255.133:8000/api/plants?ids=${plantIds.join(",")}`,
+          `http://localhost:5000/api/plants?ids=${plantIds.join(",")}`,
           {
             headers: {
               Authorization: "Bearer " + token,
@@ -85,7 +85,7 @@ const HarvestsPage = () => {
 
   // Construct the image URL based on the filename
   const getImageUrl = (filename) => {
-    const imageUrl = `http://18.117.255.133:8000/static/images/${filename}`;
+    const imageUrl = `http://localhost:5000/static/images/${filename}`;
     return imageUrl;
   };
 

@@ -10,7 +10,7 @@ const HarvestTracker = ({ plant, token }) => {
   const fetchHarvestRatings = async () => {
     try {
       const response = await axios.get(
-        `http://18.117.255.133:8000/api/harvests?plant_id=${plant.id}`,
+        `http://localhost:5000/api/harvests?plant_id=${plant.id}`,
         {
           headers: {
             Authorization: "Bearer " + token,

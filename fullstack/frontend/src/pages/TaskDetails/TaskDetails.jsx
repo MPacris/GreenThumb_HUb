@@ -22,7 +22,7 @@ const TaskDetails = () => {
     const fetchTaskDetails = async () => {
       try {
         const response = await axios.get(
-          `http://18.117.255.133:8000/api/tasks/${task_id}`,
+          `http://localhost:5000/api/tasks/${task_id}`,
           {
             headers: {
               Authorization: "Bearer " + token,
@@ -32,7 +32,7 @@ const TaskDetails = () => {
         setTask(response.data);
 
         const plantResponse = await axios.get(
-          `http://18.117.255.133:8000/api/plants/${response.data.plant_id}`,
+          `http://localhost:5000/api/plants/${response.data.plant_id}`,
           {
             headers: {
               Authorization: "Bearer " + token,
@@ -68,7 +68,7 @@ const TaskDetails = () => {
         task_completed: task.task_completed,
       };
 
-      await axios.post("http://18.117.255.133:8000/api/harvests", harvestData, {
+      await axios.post("http://localhost:5000/api/harvests", harvestData, {
         headers: {
           Authorization: "Bearer " + token,
         },
@@ -84,7 +84,7 @@ const TaskDetails = () => {
   const handleImageUpload = async (formData) => {
     try {
       await axios.post(
-        `http://18.117.255.133:8000/api/harvestImage/${task.id}`,
+        `http://localhost:5000/api/harvestImage/${task.id}`,
         formData,
         {
           headers: {

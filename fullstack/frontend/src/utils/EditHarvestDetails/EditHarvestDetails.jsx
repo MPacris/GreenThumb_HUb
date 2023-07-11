@@ -24,7 +24,7 @@ const EditHarvestDetails = ({ harvest, token, handleSave }) => {
         notes: newNotes,
       };
 
-      await axios.put(`http://18.117.255.133:8000/api/harvests/${harvest.id}`, data, {
+      await axios.put(`http://localhost:5000/api/harvests/${harvest.id}`, data, {
         headers: {
           Authorization: "Bearer " + token,
         },
