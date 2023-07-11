@@ -8,8 +8,7 @@ services:
     environment:
       - MYSQL_ROOT_PASSWORD=root
     restart: always
-    volumes:
-       #db-data:/var/lib/mysql
+
 
   greenthumb-hub-backend:
     # build: ./backend
@@ -29,5 +28,3 @@ services:
       - 80:3000
     depends_on:
       - "greenthumb-hub-backend"
-volumes:
-  db-data:
