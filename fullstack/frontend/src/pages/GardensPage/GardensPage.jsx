@@ -1,10 +1,9 @@
-import React from "react";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import useAuth from "../../hooks/useAuth";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-import './GardensPage.css'
+import "./GardensPage.css";
 
 const GardensPage = () => {
   const [user, token] = useAuth();
@@ -17,7 +16,7 @@ const GardensPage = () => {
   useEffect(() => {
     const fetchGardens = async () => {
       try {
-        const response = await axios.get("http://18.117.255.133:8000/api/user_gardens", {
+        const response = await axios.get("http://18.117.255.133:8000/api/gardens", {
           headers: {
             Authorization: "Bearer " + token,
           },
@@ -94,7 +93,7 @@ const GardensPage = () => {
           <form onSubmit={handleSubmit} className="add-gardener-form">
             <div className="section-title">Add a Gardener to a Garden</div>
             <div className="form-group">
-              <label element="username" className="form-label">
+              <label htmlFor="username" className="form-label">
                 Username:
               </label>
               <input
@@ -109,7 +108,7 @@ const GardensPage = () => {
             </div>
 
             <div className="form-group">
-              <label element="gardenId" className="form-label">
+              <label htmlFor="gardenId" className="form-label">
                 Garden ID:
               </label>
               <select
