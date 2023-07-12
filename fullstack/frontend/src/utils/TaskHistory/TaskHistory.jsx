@@ -9,7 +9,7 @@ const TaskHistory = ({ plant, token }) => {
   const fetchPlantTasks = async () => {
     try {
       const response = await axios.get(
-        `http://localhost:5000/api/tasks?plant_id=${plant.id}`,
+        `http://localhost:8000/api/tasks?plant_id=${plant.id}`,
         {
           headers: {
             Authorization: "Bearer " + token,

@@ -54,7 +54,7 @@ const AddPlant = () => {
 
       const response = await axios.post(
 
-        "http://localhost:5000/api/plants",
+        "http://localhost:8000/api/plants",
         formData,
         {
           headers: {

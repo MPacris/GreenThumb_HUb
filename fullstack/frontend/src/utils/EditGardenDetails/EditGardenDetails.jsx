@@ -22,7 +22,7 @@ const EditGardenDetails = ({ garden, token, handleSave }) => {
         notes: newNotes,
       };
 
-      await axios.put(`http://localhost:5000/api/gardens/${garden.id}`, data, {
+      await axios.put(`http://localhost:8000/api/gardens/${garden.id}`, data, {
         headers: {
           Authorization: "Bearer " + token,
         },

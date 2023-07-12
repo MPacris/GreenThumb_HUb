@@ -48,14 +48,14 @@ const CreateTask = () => {
 
   async function postNewTask() {
     try {
-      let existingTasks = await axios.get("http://localhost:5000/api/tasks", {
+      let existingTasks = await axios.get("http://localhost:8000/api/tasks", {
         headers: {
           Authorization: "Bearer " + token,
         },
       });
 
       let response = await axios.post(
-        "http://localhost:5000/api/tasks",
+        "http://localhost:8000/api/tasks",
         formData,
         {
           headers: {

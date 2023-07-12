@@ -18,7 +18,7 @@ const HarvestDetails = () => {
   const fetchHarvestDetails = async () => {
     try {
       const harvestResponse = await axios.get(
-        `http://localhost:5000/api/harvests/${harvest_id}`,
+        `http://localhost:8000/api/harvests/${harvest_id}`,
         {
           headers: {
             Authorization: "Bearer " + token,
@@ -27,7 +27,7 @@ const HarvestDetails = () => {
       );
 
       const taskResponse = await axios.get(
-        `http://localhost:5000/api/tasks/${harvestResponse.data.task_id}`,
+        `http://localhost:8000/api/tasks/${harvestResponse.data.task_id}`,
         {
           headers: {
             Authorization: "Bearer " + token,
@@ -36,7 +36,7 @@ const HarvestDetails = () => {
       );
 
       const plantResponse = await axios.get(
-        `http://localhost:5000/api/plants/${taskResponse.data.plant_id}`,
+        `http://localhost:8000/api/plants/${taskResponse.data.plant_id}`,
         {
           headers: {
             Authorization: "Bearer " + token,
@@ -113,7 +113,7 @@ const HarvestDetails = () => {
             {harvest.image_url ? (
               <img
                 className="harvest-image"
-                src={`http://127.0.0.1:5000/static/images/${harvest.image_url}`}
+                src={`http://localhost:8000/static/images/${harvest.image_url}`}
                 alt="Harvest Image"
               />
             ) : (

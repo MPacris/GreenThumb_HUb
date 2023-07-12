@@ -19,7 +19,7 @@ function setUserObject(user) {
 }
 
 export const AuthProvider = ({ children }) => {
-  const BASE_URL = "http://127.0.0.1:5000/api/auth";
+  const BASE_URL = "http://localhost:8000/api/auth";
   const userToken = JSON.parse(localStorage.getItem("token"));
   const decodedUser = userToken ? jwtDecode(userToken) : null;
   const [token, setToken] = useState(userToken);
