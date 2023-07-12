@@ -17,7 +17,7 @@ const EditTaskDetails = () => {
     const fetchTaskDetails = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:8000/api/tasks/${task_id}`,
+          `http://18.117.255.133:8000/api/tasks/${task_id}`,
           {
             headers: {
               Authorization: "Bearer " + token,
@@ -41,7 +41,7 @@ const EditTaskDetails = () => {
         task_completed: newCompleted || task.task_completed,
       };
 
-      await axios.put(`http://localhost:8000/api/tasks/${task_id}`, data, {
+      await axios.put(`http://18.117.255.133:8000/api/tasks/${task_id}`, data, {
         headers: {
           Authorization: "Bearer " + token,
         },
