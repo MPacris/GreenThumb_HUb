@@ -25,7 +25,7 @@ const GardenDetails = () => {
     const fetchGardenDetails = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:5000/api/gardens/${garden_id}`,
+          `http://18.117.255.133:8000/api/gardens/${garden_id}`,
           {
             headers: {
               Authorization: "Bearer " + token,
@@ -43,7 +43,7 @@ const GardenDetails = () => {
     const fetchPlants = async () => {
       try {
         const plantResponse = await axios.get(
-          "http://localhost:5000/api/plants",
+          "http://18.117.255.133:8000/api/plants",
           {
             headers: {
               Authorization: "Bearer " + token,
@@ -54,7 +54,7 @@ const GardenDetails = () => {
         const plantData = plantResponse.data;
 
         const harvestResponse = await axios.get(
-          "http://localhost:5000/api/harvests",
+          "http://18.117.255.133:8000/api/harvests",
           {
             headers: {
               Authorization: "Bearer " + token,
@@ -132,7 +132,7 @@ const GardenDetails = () => {
 
     try {
       const response = await axios.post(
-        "http://localhost:5000/api/plants",
+        "http://18.117.255.133:8000/api/plants",
         {
           type: formData.type,
           location: formData.location,
@@ -234,15 +234,17 @@ const GardenDetails = () => {
         </div>
 
         <div className="col-lg-4 col-lg-3">
-          <div className="users">
-            <h3>Active Gardeners:</h3>
-            <div>
-              {garden.users.map((user) => (
-                <li key={user.id}>{user.username}</li>
-              ))}
-            </div>
-          </div>
-        </div>
+  <div className="users">
+    <h3>Active Gardeners:</h3>
+    <div>
+      {garden.users.map((user) => (
+        <li key={user.id}>
+          {user.username} (User ID: {user.id})
+        </li>
+      ))}
+    </div>
+  </div>
+</div>
       </div>
       <div className="row">
         <div className="bottom-container">
@@ -258,14 +260,14 @@ const GardenDetails = () => {
                 <div>{plant.location}</div>
                 {plant.image_url && (
                   <img
-                    src={`http://localhost:5000/static/images/${plant.image_url}`}
+                    src={`http://18.117.255.133:8000/static/images/${plant.image_url}`}
                     alt="Plant Image"
                     className="plant-picture"
                   />
                 )}
                 <div>Garden ID: {plant.garden_id}</div>
                 <div>
-                  Average Harvest Rating:{" "}
+                  Avg Harvest Rating:{" "}
                   {plant.average_harvest_rating.toFixed(1)}
                 </div>
               </Link>

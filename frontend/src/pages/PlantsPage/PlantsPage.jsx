@@ -11,67 +11,52 @@ const PlantsPage = () => {
   useEffect(() => {
     const fetchPlants = async () => {
       try {
-        const gardenIdsResponse = await axios.get("http://18.117.255.133:8000/api/user_gardens", {
-          headers: {
-            Authorization: "Bearer " + token,
-          },
-        });
-        const gardenIds = gardenIdsResponse.data.map((garden) => garden.garden_id);
-
         const plantResponse = await axios.get("http://18.117.255.133:8000/api/plants", {
           headers: {
             Authorization: "Bearer " + token,
           },
           params: {
-            garden_ids: gardenIds.join(","),
+            include_garden: true,
           },
         });
         const plantData = plantResponse.data;
 
-        const fetchHarvests = async () => {
-          try {
-            const harvestsResponse = await axios.get("http://18.117.255.133:8000/api/harvests", {
-              headers: {
-                Authorization: "Bearer " + token,
-              },
-            });
-            const harvestsData = harvestsResponse.data;
+        const harvestsResponse = await axios.get("http://18.117.255.133:8000/api/harvests", {
+          headers: {
+            Authorization: "Bearer " + token,
+          },
+        });
+        const harvestsData = harvestsResponse.data;
 
-            const plantMap = {};
+        const plantMap = {};
 
-            harvestsData.forEach((harvest) => {
-              if (!plantMap[harvest.plant_id]) {
-                plantMap[harvest.plant_id] = {
-                  totalRating: 0,
-                  count: 0,
-                  harvests: [],
-                };
-              }
-
-              plantMap[harvest.plant_id].totalRating += harvest.rating;
-              plantMap[harvest.plant_id].count++;
-              plantMap[harvest.plant_id].harvests.push(harvest);
-            });
-
-            const updatedPlants = plantData.map((plant) => {
-              const averageRating =
-                plantMap[plant.id] && plantMap[plant.id].count
-                  ? plantMap[plant.id].totalRating / plantMap[plant.id].count
-                  : 0;
-
-              return {
-                ...plant,
-                average_harvest_rating: averageRating.toFixed(1),
-              };
-            });
-
-            setPlants(updatedPlants);
-          } catch (error) {
-            console.log(error.response.data);
+        harvestsData.forEach((harvest) => {
+          if (!plantMap[harvest.plant_id]) {
+            plantMap[harvest.plant_id] = {
+              totalRating: 0,
+              count: 0,
+              harvests: [],
+            };
           }
-        };
 
-        fetchHarvests();
+          plantMap[harvest.plant_id].totalRating += harvest.rating;
+          plantMap[harvest.plant_id].count++;
+          plantMap[harvest.plant_id].harvests.push(harvest);
+        });
+
+        const updatedPlants = plantData.map((plant) => {
+          const averageRating =
+            plantMap[plant.id] && plantMap[plant.id].count
+              ? plantMap[plant.id].totalRating / plantMap[plant.id].count
+              : 0;
+
+          return {
+            ...plant,
+            average_harvest_rating: averageRating.toFixed(1),
+          };
+        });
+
+        setPlants(updatedPlants);
       } catch (error) {
         console.log(error.response.data);
       }
@@ -99,8 +84,8 @@ const PlantsPage = () => {
                   className="plant-picture"
                 />
               )}
-              <div>Garden ID: {plant.garden_id}</div>
-              <div>Average Harvest Rating: {plant.average_harvest_rating}</div>
+              <div>Garden: {plant.garden.name}</div>
+              <div>Avg Harvest Rating: {plant.average_harvest_rating}</div>
             </Link>
           </div>
         ))}
