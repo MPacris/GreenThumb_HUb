@@ -88,3 +88,17 @@
   cursor: pointer;
   outline: none;
 }
+
+.edit-plant-details-container {
+  position: relative;
+  z-index: 2;
+}
+
+.form-group {
+  position: relative;
+  z-index: 1;
+}
+
+.submit-button {
+  margin-top: 10px;
+}

@@ -3,7 +3,7 @@ from flask_sqlalchemy import SQLAlchemy
 
 db = SQLAlchemy()
 
-user_gardens = db.Table('UserGardens',
+user_gardens = db.Table('usergardens',
     db.Column('id', db.Integer, primary_key=True, autoincrement=True),
     db.Column('user_id', db.Integer, db.ForeignKey('user.id'), primary_key= True),
     db.Column('garden_id', db.Integer, db.ForeignKey('garden.id'), primary_key= True))

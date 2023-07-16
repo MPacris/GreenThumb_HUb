@@ -23,7 +23,7 @@ const PlantDetails = () => {
   const fetchPlantDetails = async () => {
     try {
       const response = await axios.get(
-        `http://18.117.255.133:8000/api/plants/${plant_id}?include_type=true`,
+        `http://localhost:5000/api/plants/${plant_id}?include_type=true`,
         {
           headers: {
             Authorization: "Bearer " + token,
@@ -72,7 +72,7 @@ const PlantDetails = () => {
 
     try {
       const response = await axios.post(
-        "http://18.117.255.133:8000/api/plants",
+        "http://localhost:5000/api/plants",
         {
           type: formData.type,
           location: formData.location,
@@ -106,7 +106,7 @@ const PlantDetails = () => {
         <div className="col-4">
           <div className="top-row-container">
             <div className="plant-information">
-            <h1 className="welcome-message">Plant Information:</h1>
+              <h1 className="welcome-message">Plant Information:</h1>
               <div>
                 <div>Plant ID: {plant_id}</div>
                 <div>Plant Type: {plant.type}</div>
@@ -145,10 +145,10 @@ const PlantDetails = () => {
                 handleImageUpload={handleImageUpload}
               />
               <div className="links">
-              <Link to={`/create-task?plant_id=${plant_id}`}>
-                Create a New Task
-              </Link>
-            </div>
+                <Link to={`/create-task?plant_id=${plant_id}`}>
+                  Create a New Task
+                </Link>
+              </div>
             </div>
           </div>
         </div>
@@ -158,7 +158,7 @@ const PlantDetails = () => {
             <div className="plant-image-container">
               <img
                 className="plant-image"
-                src={`http://18.117.255.133:8000/static/images/${
+                src={`http://localhost:5000/static/images/${
                   plant.image_url || ""
                 }`}
                 alt="Plant"

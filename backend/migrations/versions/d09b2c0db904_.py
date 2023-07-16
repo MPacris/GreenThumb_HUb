@@ -46,7 +46,7 @@ def upgrade():
     sa.ForeignKeyConstraint(['user_id'], ['user.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
-    op.create_table('UserGardens',
+    op.create_table('usergardens',
     sa.Column('id', sa.Integer(), autoincrement=True, nullable=False),
     sa.Column('user_id', sa.Integer(), nullable=False),
     sa.Column('garden_id', sa.Integer(), nullable=False),
@@ -93,7 +93,7 @@ def downgrade():
     op.drop_table('harvest')
     op.drop_table('task')
     op.drop_table('plant')
-    op.drop_table('UserGardens')
+    op.drop_table('usergardens')
     op.drop_table('garden')
     op.drop_table('car')
     op.drop_table('user')
