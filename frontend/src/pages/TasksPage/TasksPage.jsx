@@ -20,7 +20,7 @@ const TasksPage = () => {
   useEffect(() => {
     const fetchTasks = async () => {
       try {
-        const response = await axios.get("http://18.117.255.133:8000/api/tasks", {
+        const response = await axios.get("http://localhost:5000/api/tasks", {
           headers: {
             Authorization: "Bearer " + token,
           },
@@ -30,7 +30,7 @@ const TasksPage = () => {
 
         const plantIds = taskData.map((task) => task.plant_id);
         const plantResponse = await axios.get(
-          `http://18.117.255.133:8000/api/plants?ids=${plantIds.join(",")}`,
+          `http://localhost:5000/api/plants?ids=${plantIds.join(",")}`,
           {
             headers: {
               Authorization: "Bearer " + token,
