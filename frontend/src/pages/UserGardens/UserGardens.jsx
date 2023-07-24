@@ -18,7 +18,7 @@ function UserGardens() {
 
   const fetchUserGardens = async () => {
     try {
-      const response = await axios.get('http://localhost:5000/api/user_gardens', {
+      const response = await axios.get('http://18.117.255.133:8000/api/user_gardens', {
         headers: {
           Authorization: 'Bearer ' + token,
         },
@@ -32,7 +32,7 @@ function UserGardens() {
 
   const fetchUsers = async () => {
     try {
-      const response = await axios.get('http://localhost:5000/api/users', {
+      const response = await axios.get('http://18.117.255.133:8000/api/users', {
         headers: {
           Authorization: 'Bearer ' + token,
         },
@@ -48,7 +48,7 @@ function UserGardens() {
     e.preventDefault();
     try {
       const response = await axios.post(
-        'http://localhost:5000/api/user_gardens',
+        'http://18.117.255.133:8000/api/user_gardens',
         {
           username: selectedUser,
           garden_id: selectedGarden,
