@@ -25,7 +25,7 @@ const GardenDetails = () => {
     const fetchGardenDetails = async () => {
       try {
         const response = await axios.get(
-          `http://18.117.255.133:8000/api/gardens/${garden_id}`,
+          `http://localhost:5000/api/gardens/${garden_id}`,
           {
             headers: {
               Authorization: "Bearer " + token,
@@ -43,7 +43,7 @@ const GardenDetails = () => {
     const fetchPlants = async () => {
       try {
         const plantResponse = await axios.get(
-          "http://18.117.255.133:8000/api/plants",
+          "http://localhost:5000/api/plants",
           {
             headers: {
               Authorization: "Bearer " + token,
@@ -54,7 +54,7 @@ const GardenDetails = () => {
         const plantData = plantResponse.data;
 
         const harvestResponse = await axios.get(
-          "http://18.117.255.133:8000/api/harvests",
+          "http://localhost:5000/api/harvests",
           {
             headers: {
               Authorization: "Bearer " + token,
@@ -132,7 +132,7 @@ const GardenDetails = () => {
 
     try {
       const response = await axios.post(
-        "http://18.117.255.133:8000/api/plants",
+        "http://localhost:5000/api/plants",
         {
           type: formData.type,
           location: formData.location,
@@ -162,6 +162,19 @@ const GardenDetails = () => {
     setEditMode(false);
   };
 
+  const handleDelete = async () => {
+    try {
+      await axios.delete(`http://localhost:5000/api/gardens/${garden_id}`, {
+        headers: {
+          Authorization: "Bearer " + token,
+        },
+      });
+      navigate("/gardens");
+    } catch (error) {
+      console.log(error.response.data);
+    }
+  };
+
   return (
     <div className="container-fluid">
       <div className="top-container">
@@ -171,6 +184,10 @@ const GardenDetails = () => {
             <p>{garden.notes}</p>
 
             <Link className="garden-link" to="/gardens">Back to Gardens Page</Link>
+            <div className="buttons">
+            <button onClick={handleDelete} className="submit-button">
+                Delete Garden
+              </button>
             {!editMode ? (
               <button
                 type="submit"
@@ -179,6 +196,8 @@ const GardenDetails = () => {
               >
                 Edit Garden
               </button>
+
+              
             ) : (
               <button
                 type="submit"
@@ -187,9 +206,10 @@ const GardenDetails = () => {
               >
                 Cancel Edit
               </button>
+              
             )}
         
-
+        </div>
               {editMode ? (
                 <EditGardenDetails
                   garden={garden}
@@ -260,7 +280,7 @@ const GardenDetails = () => {
                 <div>{plant.location}</div>
                 {plant.image_url && (
                   <img
-                    src={`http://18.117.255.133:8000/static/images/${plant.image_url}`}
+                    src={`http://localhost:5000/static/images/${plant.image_url}`}
                     alt="Plant Image"
                     className="plant-picture"
                   />

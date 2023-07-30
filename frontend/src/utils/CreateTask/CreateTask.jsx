@@ -23,6 +23,8 @@ const taskTypeOptions = [
   "final harvest",
 ];
 
+
+
 const CreateTask = () => {
   const [user, token] = useAuth();
   const navigate = useNavigate();
@@ -48,14 +50,14 @@ const CreateTask = () => {
 
   async function postNewTask() {
     try {
-      let existingTasks = await axios.get("http://18.117.255.133:8000/api/tasks", {
+      let existingTasks = await axios.get("http://localhost:5000/api/tasks", {
         headers: {
           Authorization: "Bearer " + token,
         },
       });
 
       let response = await axios.post(
-        "http://18.117.255.133:8000/api/tasks",
+        "http://localhost:5000/api/tasks",
         formData,
         {
           headers: {
@@ -87,6 +89,12 @@ const CreateTask = () => {
     }
 
     postNewTask();
+
+
+  };
+
+  const handleCancel = () => {
+    navigate('/plants');
   };
 
   return (
@@ -165,8 +173,10 @@ const CreateTask = () => {
                   onChange={handleInputChange}
                 />
               </div>
-
+              <div className="buttons">
               <button className="submit-button" type="submit">Create Task</button>
+              <button className="submit-button" onClick={handleCancel}>Cancel</button>
+              </div>
             </form>
 
             <div>

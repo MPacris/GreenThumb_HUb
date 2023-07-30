@@ -9,12 +9,11 @@ const Navbar = () => {
   const navigate = useNavigate();
   return (
     <div className="navBar">
-      <ul>
-        <li className="brand">
-        <Link to="/" style={{ textDecoration: "none", color: "white", textShadow: "2px 2px 4px rgba(0, 0, 0, 0.5)", outline: "2px solid white" }}>
-            <b>GreenThumb Hub</b>
+      <ul>     
+        <Link to="/" >
+        <img src="/uploadpictures/GreenThumbLogo.png" alt="GreenThumb Hub" className="logo" />
           </Link>
-        </li>
+        
         <li>
           <Link to="/gardens" style={{ fontSize: "1em", textDecoration: "none", color: "white",textShadow: "2px 2px 4px rgba(0, 0, 0, 0.5)" }}>
             Gardens Page

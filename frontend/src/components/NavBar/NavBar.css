@@ -14,6 +14,7 @@ li {
   color: white;
   margin-bottom: 2rem;
   padding: 1.5rem 2rem;
+
 }
 
 .navBar button {
@@ -30,7 +31,10 @@ li {
   cursor: pointer;
 }
 
-.brand {
-  cursor: pointer;
-  font-size: 2rem;
+
+.logo {
+  width: 50px; /* Adjust the size as needed */
+  height: 50px; /* Adjust the size as needed */
+  border-radius: 25%;
+  object-fit: cover;
 }

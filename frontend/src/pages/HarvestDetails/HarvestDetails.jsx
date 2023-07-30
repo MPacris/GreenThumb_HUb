@@ -18,7 +18,7 @@ const HarvestDetails = () => {
   const fetchHarvestDetails = async () => {
     try {
       const harvestResponse = await axios.get(
-        `http://18.117.255.133:8000/api/harvests/${harvest_id}`,
+        `http://localhost:5000/api/harvests/${harvest_id}`,
         {
           headers: {
             Authorization: "Bearer " + token,
@@ -27,7 +27,7 @@ const HarvestDetails = () => {
       );
 
       const taskResponse = await axios.get(
-        `http://18.117.255.133:8000/api/tasks/${harvestResponse.data.task_id}`,
+        `http://localhost:5000/api/tasks/${harvestResponse.data.task_id}`,
         {
           headers: {
             Authorization: "Bearer " + token,
@@ -36,7 +36,7 @@ const HarvestDetails = () => {
       );
 
       const plantResponse = await axios.get(
-        `http://18.117.255.133:8000/api/plants/${taskResponse.data.plant_id}`,
+        `http://localhost:5000/api/plants/${taskResponse.data.plant_id}`,
         {
           headers: {
             Authorization: "Bearer " + token,
@@ -82,18 +82,23 @@ const HarvestDetails = () => {
   if (!harvest || !task) {
     return <p>Loading...</p>;
   }
+  const handleDelete = async () => {
+    try {
+      await axios.delete(`http://localhost:5000/api/harvests/${harvest_id}`, {
+        headers: {
+          Authorization: "Bearer " + token,
+        },
+      });
+      navigate("/harvests"); // Redirect to the Harvests page after deletion
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   return (
     <div className="container">
       <div className="row">
         <div className="col-md-6">
-          <div className="harvest-information">
-            <h3 className="mb-3">Harvest Information:</h3>
-            <div>Harvest ID: {harvest.id}</div>
-            <div>Task ID: {harvest.task_id}</div>
-            <div>Rating: {harvest.rating}</div>
-          </div>
-
           <div className="task-information">
             <h3 className="mb-3">Task Information:</h3>
             <div>Plant ID: {task.plant_id}</div>
@@ -102,10 +107,23 @@ const HarvestDetails = () => {
             <div>Task Completed: {task.task_completed}</div>
             <div>Assigned User: {task.user_id}</div>
           </div>
+          <div className="harvest-information">
+            <h3 className="mb-3">Harvest Information:</h3>
+            <div>Harvest ID: {harvest.id}</div>
+            <div>Task ID: {harvest.task_id}</div>
+            <div>Rating: {harvest.rating}</div>
 
-          <EditHarvestDetails className="edit-harvest-details" harvest={harvest} token={token} handleSave={handleSave} />
+            <button className="submit-button" onClick={handleDelete}>
+              Delete Harvest
+            </button>
+          </div>
 
-
+          <EditHarvestDetails
+            className="edit-harvest-details"
+            harvest={harvest}
+            token={token}
+            handleSave={handleSave}
+          />
         </div>
 
         <div className="col-md-6">
@@ -113,7 +131,7 @@ const HarvestDetails = () => {
             {harvest.image_url ? (
               <img
                 className="harvest-image"
-                src={`http://18.117.255.133:8000/static/images/${harvest.image_url}`}
+                src={`http://127.0.0.1:5000/static/images/${harvest.image_url}`}
                 alt="Harvest Image"
               />
             ) : (
@@ -121,11 +139,13 @@ const HarvestDetails = () => {
             )}
           </div>
 
-          <div><UploadHarvestImage
-            harvest={harvest}
-            token={token}
-            onImageUpload={handleImageUpload}
-          /></div>
+          <div>
+            <UploadHarvestImage
+              harvest={harvest}
+              token={token}
+              onImageUpload={handleImageUpload}
+            />
+          </div>
         </div>
       </div>
     </div>

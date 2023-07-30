@@ -13,11 +13,26 @@ const EditTaskDetails = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
+  
+  
+  const handleDelete = async () => {
+    try {
+      await axios.delete(`http://localhost:5000/api/tasks/${task_id}`, {
+        headers: {
+          Authorization: "Bearer " + token,
+        },
+      });
+      navigate(`/tasks`);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   useEffect(() => {
     const fetchTaskDetails = async () => {
       try {
         const response = await axios.get(
-          `http://18.117.255.133:8000/api/tasks/${task_id}`,
+          `http://localhost:5000/api/tasks/${task_id}`,
           {
             headers: {
               Authorization: "Bearer " + token,
@@ -41,7 +56,7 @@ const EditTaskDetails = () => {
         task_completed: newCompleted || task.task_completed,
       };
 
-      await axios.put(`http://18.117.255.133:8000/api/tasks/${task_id}`, data, {
+      await axios.put(`http://localhost:5000/api/tasks/${task_id}`, data, {
         headers: {
           Authorization: "Bearer " + token,
         },
@@ -56,6 +71,12 @@ const EditTaskDetails = () => {
   if (!task) {
     return <p>Task not found</p>;
   }
+
+  const handleCancel = () => {
+    navigate("/tasks"); // Navigate back to the Task page
+  };
+
+  
 
   return (
     <div className="edit-task-details">
@@ -91,8 +112,15 @@ const EditTaskDetails = () => {
       <div className="edit-task-details__item">
         <span className="edit-task-details__label">Plant ID:</span> {task.plant_id}
       </div>
-
+      <div className="buttons">
+      <button className="submit-button" onClick={handleDelete}>
+        Delete Task
+      </button>
       <button className="submit-button" onClick={handleUpdate}>Save Changes</button>
+      <button className="submit-button" onClick={handleCancel}>
+          Cancel
+        </button>
+      </div>
     </div>
   );
 };
