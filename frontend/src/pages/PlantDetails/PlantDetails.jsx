@@ -23,7 +23,7 @@ const PlantDetails = () => {
   const fetchPlantDetails = async () => {
     try {
       const response = await axios.get(
-        `http://localhost:5000/api/plants/${plant_id}?include_type=true`,
+        `http://localhost:8000/api/plants/${plant_id}?include_type=true`,
         {
           headers: {
             Authorization: "Bearer " + token,
@@ -72,7 +72,7 @@ const PlantDetails = () => {
 
     try {
       const response = await axios.post(
-        "http://localhost:5000/api/plants",
+        "http://localhost:8000/api/plants",
         {
           type: formData.type,
           location: formData.location,
@@ -102,7 +102,7 @@ const PlantDetails = () => {
 
   const handleDelete = async () => {
     try {
-      await axios.delete(`http://localhost:5000/api/plants/${plant_id}`, {
+      await axios.delete(`http://localhost:8000/api/plants/${plant_id}`, {
         headers: {
           Authorization: "Bearer " + token,
         },
@@ -177,7 +177,7 @@ const PlantDetails = () => {
             <div className="plant-image-container">
               <img
                 className="plant-image"
-                src={`http://localhost:5000/static/images/${
+                src={`http://localhost:8000/static/images/${
                   plant.image_url || ""
                 }`}
                 alt="Plant"

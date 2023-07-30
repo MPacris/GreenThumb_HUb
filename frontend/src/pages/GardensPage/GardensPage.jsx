@@ -16,7 +16,7 @@ const GardensPage = () => {
   useEffect(() => {
     const fetchGardens = async () => {
       try {
-        const response = await axios.get("http://18.117.255.133:8000/api/gardens", {
+        const response = await axios.get("http://localhost:8000/api/gardens", {
           headers: {
             Authorization: "Bearer " + token,
           },
@@ -40,7 +40,7 @@ const GardensPage = () => {
     e.preventDefault();
     try {
       const response = await axios.post(
-        "http://18.117.255.133:8000/api/user_gardens",
+        "http://localhost:8000/api/user_gardens",
         {
           username,
           garden_id: gardenId,
