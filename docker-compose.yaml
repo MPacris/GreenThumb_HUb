@@ -1,7 +1,7 @@
 version: '3.4'
 services:
   db:
-    build: ./database
+    #build: ./database
     image: mpacris/greenthumb-hub-database:1.0
     ports:
       - 3307:3306
@@ -11,7 +11,7 @@ services:
     volumes:
       - db-data:/var/lib/mysql
   api:
-    build: ./backend
+    #build: ./backend
     image: mpacris/greenthumb-hub-backend:1.0
     ports:
       - 8000:8000
@@ -22,7 +22,7 @@ services:
       sh -c "flask db upgrade && gunicorn -b 0.0.0.0 app:app"
 
   frontend:
-    build: ./frontend
+    #build: ./frontend
     image: mpacris/greenthumb-hub-frontend:1.0
     ports:
       - 80:80
