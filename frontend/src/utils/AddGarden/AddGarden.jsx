@@ -30,7 +30,7 @@ const AddGarden = () => {
 
   async function postNewGarden() {
     try {
-      let existingGardens = await axios.get('http://18.117.255.133:8000/api/gardens', {
+      let existingGardens = await axios.get('http://localhost:8000/api/gardens', {
         headers: {
           Authorization: 'Bearer ' + token,
         },
@@ -42,7 +42,7 @@ const AddGarden = () => {
         return;
       }
 
-      let response = await axios.post('http://18.117.255.133:8000/api/gardens', formData, {
+      let response = await axios.post('http://localhost:8000/api/gardens', formData, {
         headers: {
           Authorization: 'Bearer ' + token,
         },
